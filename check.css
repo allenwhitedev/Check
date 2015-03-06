@@ -1,1 +1,48 @@
-/* CSS declarations go here */
+/* BODY & NAV(header right now) */
+body {background: #404040; color: rgba(255,255,255,.5);}
+ul {list-style: none; padding: 2px;}
+.header-navbar 
+{
+	background: rgba(255,255,255,.35); 
+	text-align: center; 
+	vertical-align: middle;
+	border: none;	
+}
+/* SIGNIN */
+#login-sign-in-link 
+{
+	color: rgba(255,255,255,.75); 
+  text-decoration: !important none; /* does nothing currently */
+}
+.signin-link {padding-left: 50px; margin: 20px auto;}
+/* TODOS LIST */
+.todosList
+{
+	background: #404040; 
+	width: 80%; 
+	margin: 0 auto;
+	border: 4px solid rgba(255,255,255,.5);
+	border-radius: 2px;
+	color: rgba(255,255,255,.5);
+	padding: 10px;
+	font-size: 1.5rem;
+}
+/* TODOS LIST INPUTS */
+.addOrRemoveTodoArea 
+{text-align: center; margin: 40px; color: rgba(255,255,255,.5);}
+.addOrRemoveTodoArea form input, .addOrRemoveTodoArea form textarea  
+{
+	background: #404040; 
+  border: 2px solid rgba(255,255,255,.5);
+  border-radius: 1px;
+  margin: 2px auto;
+  padding: 2px;
+  color: rgba(255,255,255,.5);
+}
+.addTodoButton {background: #404040; border: 2px solid rgba(255,255,255,.5);}
+.removeTodoButton 
+{background: #df3e3e !important; border: 2px solid rgba(255,255,255,.5);}
+.finishTodo:hover, .changeTodoStatus:hover, .addTodoButton:hover 
+{color: #fff;}
+.finishTodo:hover, .changeTodoStatus, .addTodoButton 
+{cursor: pointer; cursor: hand;}

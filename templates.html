@@ -1,0 +1,47 @@
+<!-- TEMPLATES -->
+
+<!-- TODOS LIST -->
+<template name="todosList">
+
+<div class="todosList">
+	<ul>
+	{{#each todo}}
+		<li class='Todo {{selectedClass}}'>
+	  	<h2>
+	  		<span class='finishTodo'><i class="fa fa-square-o"></i> </span> 
+	  		<span class='changeTodoStatus'>{{content}} ({{currWorker}})</span>
+	  	</h2>
+	  </li>
+	{{/each}}
+	</ul>
+</div>
+
+</template>
+
+<!-- ADD TODO FORM -->
+<template name='addTodoForm'>
+
+<div class='addOrRemoveTodoArea addTodoArea'>
+	<form>
+		<input name='groupId' type='hidden' value='1'><!-- +++ Add dynamic groupId to form here -->
+		<textarea name='todoContent'></textarea>
+		<br>
+		<input type='submit' value='Add' class='addTodoButton'>
+	</form>
+</div>
+
+</template>
+
+<!-- REMOVE TODO FORM -->
+<template name='removeTodoForm'>
+	
+<div class='addOrRemoveTodoArea removeTodoArea'>
+	<form>
+		<input type='text' name='todoContent'>
+		<input name='groupId' type='hidden' value='1'>
+		<!-- +++ Add dynamic groupId to form here -->
+		<input type='submit' value='Remove' class='removeTodoButton'>
+	</form>
+</div>
+
+</template>
