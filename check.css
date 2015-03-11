@@ -37,6 +37,8 @@ ul {list-style: none; padding: 2px;}
 }
 .todosTopper {text-align: center;}
 /* TODOS LIST INPUTS */
+.todosTopper form {display: inline;}
+.todosTopper form input {background: #404040; border: none; color: rgba(255,255,255,.5);}
 .addOrRemoveTodoArea 
 {text-align: center; margin: 40px; color: rgba(255,255,255,.5);}
 .addOrRemoveTodoArea form input, .addOrRemoveTodoArea form textarea  

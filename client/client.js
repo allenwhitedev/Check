@@ -15,6 +15,13 @@ Template.todosList.events
 	'click .changeTodoStatus': function ()
 	{
 		Meteor.call('changeTodoStatus', this._id)
+	},
+	'submit .todosTopper form': function()
+	{
+		event.preventDefault()
+		console.log("fired!")
+		Meteor.call('changeListTitle', event.target.listTitle.value, localStorage.getItem('currTodoGroupId')) 
+		event.target.listTitle.value = ""
 	}
 })
 
@@ -60,6 +67,15 @@ Template.todosList.helpers
 	'groupId': function()
 	{
 		return Session.get('groupId')
+	},
+	'listTitle': function()
+	{
+		// redundant code and session check necessary to update template
+		// w/o page refresh
+		if (Session.get('currTodoGroupId'))
+			return TodoGroupsList.findOne({_id: localStorage.getItem('currTodoGroupId')}).title
+		else
+			return TodoGroupsList.findOne({_id: localStorage.getItem('currTodoGroupId')}).title
 	}
 })
 
@@ -70,7 +86,7 @@ Template.todoGroups.events
 	{
 		console.log("Todogroup id: " + this._id)
 		localStorage.setItem('currTodoGroupId', this._id)
-		//Meteor.subscribe('theTodos', this._id)
+		Session.set('currTodoGroupId', this._id) // for listTitle
 		Stuff.stop()
 		Stuff = Meteor.subscribe('theTodos', localStorage.getItem('currTodoGroupId'))
 	}

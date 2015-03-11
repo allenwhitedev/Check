@@ -24,9 +24,12 @@
 
 <div class='todosTopper'>
 	<i class="fa fa-user-times"></i> 
-	Non-Generic List Title 
+	<form>
+	<input type='text' name='listTitle' placeholder='{{listTitle}}'>
+	</form>
 	<i class="fa fa-user-plus"></i>
 </div>
+
 <div class="todosList">
 	<ul>
 	{{#each todo}}
