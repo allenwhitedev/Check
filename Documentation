@@ -1,0 +1,8 @@
+Todos:
+
+content:
+	max characters
+
+status: integer represent users working on todo. 
+	Default is 0. 
+	-1 means complete

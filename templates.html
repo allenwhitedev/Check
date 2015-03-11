@@ -1,14 +1,42 @@
 <!-- TEMPLATES -->
 
+<!-- TODO GROUPS -->
+<template name='todoGroups'>
+	<nav class='todoGroups'>
+	{{#each group}}
+		<span class='todoGroup'>{{_id}}</span>
+	{{/each}}
+	</nav>
+</template>
+
+<!-- ADD TODOGROUP FORM -->
+<template name='addTodoGroupForm'>
+	<div class='addTodoGroupArea'>
+		<form>
+			<input type='text' name='todoListTitle' placeholder='Checklist name...'>
+			<input type='submit' value='Make List'>
+		</form>
+	</div>
+</template>
+
 <!-- TODOS LIST -->
 <template name="todosList">
 
+<div class='todosTopper'>
+	<i class="fa fa-user-times"></i> 
+	Non-Generic List Title 
+	<i class="fa fa-user-plus"></i>
+</div>
 <div class="todosList">
 	<ul>
 	{{#each todo}}
 		<li class='Todo {{selectedClass}}'>
 	  	<h2>
-	  		<span class='finishTodo'><i class="fa fa-square-o"></i> </span> 
+	  	{{#if isDone}}
+	  		<span class='finishTodo'><i class="fa fa-square-o"></i></span>
+	  	{{else}} 
+	  		<span class='finishTodo'><i class="fa fa-check-square-o"></i></span>
+	  	{{/if}}
 	  		<span class='changeTodoStatus'>{{content}} ({{currWorker}})</span>
 	  	</h2>
 	  </li>
@@ -23,7 +51,6 @@
 
 <div class='addOrRemoveTodoArea addTodoArea'>
 	<form>
-		<input name='groupId' type='hidden' value='1'><!-- +++ Add dynamic groupId to form here -->
 		<textarea name='todoContent'></textarea>
 		<br>
 		<input type='submit' value='Add' class='addTodoButton'>

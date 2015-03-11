@@ -1,14 +1,16 @@
 // CLIENT(TODOS LIST )
 
-// SUBSCRIPTIONS
-Meteor.subscribe('theTodos')
+// SUBSCRIPTIONS (TODOSLIST AND TODOGROUPS)
+var Stuff = Meteor.subscribe('theTodos', localStorage.getItem('currTodoGroupId'))
+Meteor.subscribe('theGroups')
 
-// EVENTS (TODOS LIST)
+// EVENTS (TODOS LIST) 
 Template.todosList.events
 ({
 	'click .finishTodo': function ()
 	{
 		Meteor.call('finishTodo', this._id)
+		console.log("this._id: " + this._id)
 	},
 	'click .changeTodoStatus': function ()
 	{
@@ -23,7 +25,7 @@ Template.addTodoForm.events
 	{
 		event.preventDefault()
 		var todoContent = event.target.todoContent.value
-		var groupId = event.target.groupId.value
+		var groupId = localStorage.getItem('currTodoGroupId')
 		Meteor.call('addTodo', todoContent, groupId)
 		event.target.todoContent.value = ""
 	}
@@ -47,6 +49,49 @@ Template.todosList.helpers
 ({
 	'todo': function()
 	{
-		return TodosList.find({}, {sort: {}}).fetch();
+		return TodosList.find({}, {sort: {status: -1, finishedAt: -1, content: 1}}).fetch();
+	},
+	'isDone': function()
+	{
+		if (this.status === -1)
+			return false
+		return true
+	},
+	'groupId': function()
+	{
+		return Session.get('groupId')
+	}
+})
+
+// EVENTS (ADD TODOGROUP FORM)
+Template.todoGroups.events
+({
+	'click .todoGroup': function()
+	{
+		console.log("Todogroup id: " + this._id)
+		localStorage.setItem('currTodoGroupId', this._id)
+		//Meteor.subscribe('theTodos', this._id)
+		Stuff.stop()
+		Stuff = Meteor.subscribe('theTodos', localStorage.getItem('currTodoGroupId'))
+	}
+})
+
+// EVENTS (ADD TODOGROUP FORM)
+Template.addTodoGroupForm.events
+({
+	'submit .addTodoGroupArea': function()
+	{
+		event.preventDefault()
+		var todoListTitle = event.target.todoListTitle.value
+		Meteor.call('addTodoGroup', todoListTitle)
+	}
+})
+
+// HELPERS (TODO GROUPS)
+Template.todoGroups.helpers
+({
+	'group': function()
+	{
+		return TodoGroupsList.find({});
 	}
 })

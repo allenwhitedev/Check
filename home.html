@@ -7,11 +7,15 @@
 <body>
 
 <nav class="navbar navbar-default header-navbar">
-	<h2 class="leaderboard-title">Checkr</h2>
+	<h2 class="checkrTitle">Checkr</h2>
 </nav>
 
 <div class='signin-link'> {{> loginButtons}} </div>
 
+{{> addTodoGroupForm}}
+<br>
+{{> todoGroups}}
+<br>
 {{> todosList}}	
 
 {{> addTodoForm}}
