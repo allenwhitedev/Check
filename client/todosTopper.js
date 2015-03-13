@@ -1,12 +1,20 @@
 // EVENTS (TODOS TOPPER)
 Template.todosTopper.events
 ({
-	'submit .todosTopper form': function()
+	'submit .todosTopper .listTitleForm': function()
 	{
 		event.preventDefault()
 		console.log("fired!")
 		Meteor.call('changeListTitle', event.target.listTitle.value, localStorage.getItem('currTodoGroupId')) 
 		event.target.listTitle.value = ""
+	},
+	'click .inviteUser': function()
+	{
+
+			var invitedUser = document.getElementById('invitedUser').value
+			console.log('invitedUser: ' + invitedUser)
+			Meteor.call('inviteUser', localStorage.getItem('currTodoGroupId'), invitedUser)
+			document.getElementById('invitedUser').value = ""
 	}
 })
 

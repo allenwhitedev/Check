@@ -13,5 +13,10 @@ Meteor.methods
 		var listCreator = TodoGroupsList.findOne({_id: currTodoGroupId}).members[0]
 		if (listCreator === Meteor.userId())
 			TodoGroupsList.update({_id: currTodoGroupId}, {$set: {title: listTitle}})
+	},
+	'inviteUser':function(currTodoGroupId, userEmail)
+	{
+		invitedUserId = Meteor.users.findOne({ emails: { $elemMatch: { address: userEmail } } })._id
+		TodoGroupsList.update({_id: currTodoGroupId}, {$addToSet: {members: invitedUserId}})
 	}
 })

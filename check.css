@@ -36,6 +36,8 @@ ul {list-style: none; padding: 2px;}
 	font-size: 1.5rem;
 }
 .todosTopper {text-align: center;}
+.invitationForm {float: right;}
+.inviteUser:hover {color: #fff; cursor: pointer; cursor: hand;}
 /* TODOS LIST INPUTS */
 .todosTopper form {display: inline;}
 .todosTopper form input {background: #404040; border: none; color: rgba(255,255,255,.5);}

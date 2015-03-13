@@ -4,7 +4,7 @@
 <template name='todoGroups'>
 	<nav class='todoGroups'>
 	{{#each group}}
-		<span class='todoGroup'>{{_id}}</span>
+		<span class='todoGroup'>&nbsp;{{title}}&nbsp;</span>
 	{{/each}}
 	</nav>
 </template>
@@ -22,11 +22,16 @@
 <!-- TODOS TOPPER -->
 <template name='todosTopper'>
 <div class='todosTopper'>
-	<i class="fa fa-user-times"></i> 
-	<form>
+
+	<form class='listTitleForm'>
 	<input type='text' name='listTitle' placeholder='{{listTitle}}'>
 	</form>
-	<i class="fa fa-user-plus"></i>
+	
+	<form class='invitationForm'>
+	<input type='text' name='invitedUser' id='invitedUser' placeholder="friend's email...">
+	<i class="fa fa-user-plus inviteUser"></i>	
+	</form>
+
 </div>
 </template>
 
